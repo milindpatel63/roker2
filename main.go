@@ -49,7 +49,7 @@ func changeURL(w http.ResponseWriter, r *http.Request) {
 
 	if key != secret {
 		w.WriteHeader(http.StatusForbidden)
-		fmt.Fprintf(w, "Forbidden")
+		fmt.Fprintf(w, "You Forbidden")
 		return
 	}
 
