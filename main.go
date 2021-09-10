@@ -7,12 +7,15 @@ import (
 	"net/http/httputil"
 	"net/url"
 	"os"
+	"time"
 )
 
 // URL stores your ngrok dynamic address
 var (
-	URL    = os.Getenv("URL")
+	URL1    = os.Getenv("URL1")
+	URL2	= os.Getenv("URL2")
 	secret = os.Getenv("SECRET")
+	URL	= ""
 )
 
 // Serve a reverse proxy for a given url
@@ -74,6 +77,13 @@ func getListenAddress() string {
 
 func main() {
 	log.Printf("Server will run on %s\n", getListenAddress())
+	dt := time.Now()
+	day := dt.Day()
+	if day < 16 {
+		URL := URL1
+	} else {
+		URL := URL2
+	}
 	log.Printf("Redirecting to a url: %s\n", URL)
 
 	http.HandleFunc("/update_ngrok", changeURL)
