@@ -80,9 +80,9 @@ func main() {
 	dt := time.Now()
 	day := dt.Day()
 	if day < 16 {
-		URL := URL1
+		URL = URL1
 	} else {
-		URL := URL2
+		URL = URL2
 	}
 	log.Printf("Redirecting to a url: %s\n", URL)
 
